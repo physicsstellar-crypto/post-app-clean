@@ -55,6 +55,7 @@ class PostsRepositoryImpl implements PostsRepository {
   @override
   Future<Either<Failure, Unit>> deletePost(int id) async {
      return await _getMessage (() {
+
   return remoteDataSource.deletePost(postId);
  });
 
@@ -77,6 +78,7 @@ class PostsRepositoryImpl implements PostsRepository {
   
 Future<Either<Failure, Unit>> _getMessage (
   DeleteOrUpdateOrAddPost deleteOrUpdateOrAddPost) async {
+    
    if (await networkInfo.isConnected) {
     try {
       await deleteOrUpdateOrAddPost();
